@@ -1,9 +1,9 @@
-import { getPosts, getTotalPosts } from '@/lib/wordpress';
+import { fetchPosts, fetchTotalPosts } from '@/lib/api';
 import { PostCard } from '@/components/PostCard';
 
 export default async function Home() {
-  const posts = await getPosts();
-  const totalPosts = await getTotalPosts();
+  const posts = await fetchPosts();
+  const totalPosts = await fetchTotalPosts();
 
   return (
     <main className="container mx-auto px-4 py-8">

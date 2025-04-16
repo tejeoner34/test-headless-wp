@@ -1,4 +1,4 @@
-import { getPost } from '@/lib/wordpress';
+import { fetchPost } from '@/lib/api';
 import { formatDate } from '@/lib/utils';
 import { notFound } from 'next/navigation';
 
@@ -9,7 +9,8 @@ interface PostPageProps {
 }
 
 export default async function PostPage({ params }: PostPageProps) {
-  const post = await getPost(params.slug);
+  const { slug } = await params;
+  const post = await fetchPost(slug);
 
   if (!post) {
     notFound();
